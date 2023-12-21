@@ -6,12 +6,17 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 from flask import make_response
+from flask import render_template
 
-length = 4
+length = 2
 
 database = {}
 
 app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/pow_antibot')
 def antibot():
@@ -36,4 +41,4 @@ def antibot():
         return False
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='localhost', port=80)
